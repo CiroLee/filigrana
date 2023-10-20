@@ -25,7 +25,7 @@ function App() {
   });
   useEffect(() => {
     if (!fullMark) {
-      box1Ref.current && watermark1.create(box1Ref.current);
+      box1Ref.current && watermark1.create(box1Ref.current).render();
       box2Ref.current && watermark2.create(box2Ref.current).render();
     } else {
       watermark3.create().render();

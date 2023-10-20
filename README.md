@@ -1,16 +1,8 @@
-# water-mark
+# filigrana
 
-⚠️ still in development, not stable
+it is a Spanish word that refers to watermark in English
 
 easy to use watermark for frontend. it's a pure function tool, suitable for any framework and vanilla.
-
-## Features
-
-## Install
-
-```shell
-npm install water-mark --save
-```
 
 ## Usage
 
@@ -20,7 +12,7 @@ text watermark
 
 ```typescript
 // watermarkFn is the easiest way to add watermark
-import { watermarkFn } from 'water-mark';
+import { watermarkFn } from 'filigrana';
 const container = document.getElementById('container');
 // first init
 const watermark = watermarkFn({
@@ -29,7 +21,8 @@ const watermark = watermarkFn({
   angle: 20,
 });
 
-// create canvas and mount it to a container, then use render() to render content, if will render text or image automatically
+// create canvas and mount it to a container, then use render() to render content,
+// if will render text or image automatically
 watermark.create(container).render();
 ```
 
@@ -37,7 +30,7 @@ image watermark
 
 ```typescript
 // render image mask is easy too;
-import { watermarkFn } from 'water-mark';
+import { watermarkFn } from 'filigrana';
 const container = document.getElementById('container');
 const watermark = watermarkFn({
   id: 'water-mark-img',
@@ -54,7 +47,7 @@ fullscreen watermark
 
 ```typescript
 // watermarkFn is the easiest way to add watermark
-import { watermarkFn } from 'water-mark';
+import { watermarkFn } from 'filigrana';
 const watermark = watermarkFn({
   id: 'water-mark-fullscreen',
   text: '😝',

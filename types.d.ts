@@ -1,6 +1,5 @@
 export type Sparseness = 'normal' | 'sparse' | 'compressed';
 /**
- * el:           canvas挂载元素，默认挂载在body上
  * text:         水印文字 (优先级高于图片) 默认为watermark
  * fontColor     文字水印颜色
  * fontSize      文字水印字体大小
@@ -10,7 +9,7 @@ export type Sparseness = 'normal' | 'sparse' | 'compressed';
  * gapX:         水印水平间距
  * gapY:         水印垂直间距
  * sparseness:   水印稀疏程度: normal: 常规 sparse: 稀疏 compressed: 紧凑
- * antiEase:      是否开启防止擦除, 默认开启
+ * antiErase:    是否开启防止擦除, 默认开启
  */
 export interface WaterMarkOption {
   id?: string;
@@ -23,7 +22,7 @@ export interface WaterMarkOption {
   gapX?: number;
   gapY?: number;
   sparseness?: Sparseness;
-  antiEase?: boolean;
+  antiErase?: boolean;
 }
 
 export interface InitCanvasOption {

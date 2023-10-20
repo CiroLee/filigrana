@@ -21,7 +21,7 @@ export class WaterMark {
   scale = 1;
   fontColor = DEFAULT_COLOR;
   fontSize = 16;
-  antiEase = true;
+  antiErase = true;
   sparseness: Sparseness = 'normal';
   text: string | undefined;
   image: string | undefined;
@@ -36,11 +36,27 @@ export class WaterMark {
     this.scale = option?.scale || 1;
     this.fontColor = option?.fontColor || DEFAULT_COLOR;
     this.fontSize = option?.fontSize || 16;
-    this.antiEase = option?.antiEase ?? true;
+    this.antiErase = option?.antiErase ?? true;
     this.sparseness = option?.sparseness || 'normal';
     this.initGap(option?.gapX, option?.gapY, this.sparseness);
   }
-
+  create(el?: HTMLElement) {
+    this.el = el || document.body;
+    this.isInit = true;
+    this.canvas = this.addCanvas(el);
+    this.ctx = this.canvas.getContext('2d')!;
+    if (this.antiErase && this.isInit) {
+      this.antiEraseObserver();
+    }
+    return this;
+  }
+  render() {
+    if (!this.image) {
+      this.renderText(this?.text || 'watermark', this.angle);
+    } else {
+      this.renderImage(this.image, this.angle);
+    }
+  }
   private initGap(gapX?: number, gapY?: number, sparseness?: Sparseness) {
     if (gapX || gapY) {
       this.gapX = Math.max(gapX || DEFAULT_GAP.x, 2);
@@ -53,7 +69,7 @@ export class WaterMark {
       this.gapY = DEFAULT_GAP.y * 0.6;
     }
   }
-  // 初始化canvas - 适配高清屏
+  // 初始化canvas - 适配高分辨率屏
   private initCanvas(option: InitCanvasOption) {
     const { canvas, width, height } = option;
     const dpr = window.devicePixelRatio || 1;
@@ -66,7 +82,7 @@ export class WaterMark {
     ctx.scale(dpr, dpr);
   }
   // 添加canvas节点
-  addCanvas(el?: HTMLElement | null) {
+  private addCanvas(el?: HTMLElement | null) {
     const canvas = (document.getElementById(this.id) as HTMLCanvasElement) || document.createElement('canvas');
     canvas.setAttribute('id', this.id);
     if (!el) {
@@ -74,7 +90,6 @@ export class WaterMark {
     } else {
       canvas.setAttribute('style', 'position:absolute; z-index: 9999; inset: 0; pointer-events:none;');
     }
-
     const width = this.el!.offsetWidth;
     const height = this.el!.offsetHeight;
     this.initCanvas({ canvas, width, height });
@@ -82,24 +97,7 @@ export class WaterMark {
     return canvas;
   }
 
-  create(el?: HTMLElement) {
-    this.el = el || document.body;
-    this.isInit = true;
-    this.canvas = this.addCanvas(el);
-    this.ctx = this.canvas.getContext('2d')!;
-    if (this.antiEase && this.isInit) {
-      this.antiEaseObserver();
-    }
-    return this;
-  }
-  render() {
-    if (!this.image) {
-      this.renderText(this?.text || 'watermark', this.angle);
-    } else {
-      this.renderImage(this.image, this.angle);
-    }
-  }
-  antiEaseObserver() {
+  private antiEraseObserver() {
     const config = { attributes: true, childList: true, subtree: true };
     const observer = new MutationObserver(() => {
       const watermarkEl = document.getElementById(this.id);
@@ -118,7 +116,7 @@ export class WaterMark {
     this.ctx.fillStyle = this.fontColor;
     this.ctx.fillText(text, x, y);
   }
-  renderImage(image: string, angle?: number) {
+  private renderImage(image: string, angle?: number) {
     const img = new Image();
     img.src = image;
     img.crossOrigin = 'anonymous';
@@ -145,7 +143,7 @@ export class WaterMark {
       this.ctx.restore();
     };
   }
-  renderText(text: string, angle?: number) {
+  private renderText(text: string, angle?: number) {
     if (!this.canvas || !this.ctx) return;
     const textObj = this.ctx.measureText(text);
     const rows = Math.floor(this.canvas.width / textObj.width);
