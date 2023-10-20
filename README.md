@@ -1,5 +1,7 @@
 # water-mark
 
+⚠️ still in development, not stable
+
 easy to use watermark for frontend. it's a pure function tool, suitable for any framework and vanilla.
 
 ## Features
