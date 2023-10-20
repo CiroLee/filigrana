@@ -1,6 +1,6 @@
 {
   "name": "filigrana",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "watermark for frontend, pure function tool, suitable for any framework and vanilla",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
@@ -9,6 +9,10 @@
     "prepare": "husky install",
     "build": "tsup",
     "dev": "tsup --watch --sourcemap"
+  },
+  "homepage": "https://github.com/CiroLee/filigrana",
+  "bugs": {
+    "url": "https://github.com/CiroLee/filigrana/issues"
   },
   "files": [
     "lib"
