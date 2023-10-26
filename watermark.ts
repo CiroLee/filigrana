@@ -26,7 +26,7 @@ export class WaterMark {
   text: string | undefined;
   image: string | undefined;
   angle: number | undefined;
-  isInit: boolean = false;
+  private isInit: boolean = false;
   constructor(option?: WaterMarkOption) {
     // init params
     this.id = option?.id || 'water-mark-id';

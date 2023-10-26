@@ -8,6 +8,20 @@ easy to use watermark for frontend. it's a pure function tool, suitable for any 
 
 > signature is [here](./types.d.ts)
 
+```typescript
+id:[string][optional] watermark container id, default is 'water-mark-id', recommended to fill in a unique id
+text:[string][optional] watermark text (higher priority than image), default is 'watermark'
+fontColor:[string][optional] text watermark color, default is '#ebebeb'
+fontSize:[string][optional] text watermark font size, default is 16px
+image:[string][optional] image watermark
+scale:[number][optional] image scaling ratio
+angle:[number][optional] watermark rotation angle
+gapX:[number][optional] horizontal spacing of watermark default is 4
+gapY:[number][optional] vertical spacing of watermark, default is 10
+sparseness:[string][optional] watermark sparseness: normal: regular sparse: sparse compressed: compact, default is normal
+antiErase:[boolean][optional] whether to enable anti-erase, enabled by default
+```
+
 text watermark
 
 ```typescript
@@ -46,7 +60,6 @@ watermark.create(container).render();
 fullscreen watermark
 
 ```typescript
-// watermarkFn is the easiest way to add watermark
 import { watermarkFn } from 'filigrana';
 const watermark = watermarkFn({
   id: 'water-mark-fullscreen',
