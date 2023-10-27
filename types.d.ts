@@ -1,10 +1,10 @@
 export type Sparseness = 'normal' | 'sparse' | 'compressed';
 /**
  * id            水印容器id，默认为water-mark-id, 建议填写唯一id
- * text:         水印文字 (优先级高于图片) 默认为watermark
+ * text:         水印文字, 默认为watermark
  * fontColor     文字水印颜色
  * fontSize      文字水印字体大小
- * image:        图片水印
+ * image:        图片水印(优先级高于文字)
  * scale:        图片缩放比例
  * angle:        水印旋转角度
  * gapX:         水印水平间距

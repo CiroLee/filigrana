@@ -1,6 +1,6 @@
 {
   "name": "filigrana",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "watermark for frontend, pure function tool, suitable for any framework and vanilla",
   "main": "lib/index.js",
   "module": "lib/index.mjs",

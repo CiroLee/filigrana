@@ -10,10 +10,10 @@ easy to use watermark for frontend. it's a pure function tool, suitable for any 
 
 ```typescript
 id:[string][optional] watermark container id, default is 'water-mark-id', recommended to fill in a unique id
-text:[string][optional] watermark text (higher priority than image), default is 'watermark'
+text:[string][optional] watermark text, default is 'watermark'
 fontColor:[string][optional] text watermark color, default is '#ebebeb'
 fontSize:[string][optional] text watermark font size, default is 16px
-image:[string][optional] image watermark
+image:[string][optional] image watermark(higher priority than text)
 scale:[number][optional] image scaling ratio
 angle:[number][optional] watermark rotation angle
 gapX:[number][optional] horizontal spacing of watermark default is 4
