@@ -8,19 +8,17 @@ easy to use watermark for frontend. it's a pure function tool, suitable for any 
 
 > signature is [here](./types.d.ts)
 
-```typescript
-id:[string][optional] watermark container id, default is 'water-mark-id', recommended to fill in a unique id
-text:[string][optional] watermark text, default is 'watermark'
-fontColor:[string][optional] text watermark color, default is '#ebebeb'
-fontSize:[string][optional] text watermark font size, default is 16px
-image:[string][optional] image watermark(higher priority than text)
-scale:[number][optional] image scaling ratio
-angle:[number][optional] watermark rotation angle
-gapX:[number][optional] horizontal spacing of watermark default is 4
-gapY:[number][optional] vertical spacing of watermark, default is 10
-sparseness:[string][optional] watermark sparseness: normal: regular sparse: sparse compressed: compact, default is normal
-antiErase:[boolean][optional] whether to enable anti-erase, enabled by default
-```
+id:`[string]` watermark container id, default is 'water-mark-id', recommended to fill in a unique id  
+text:`[string]` watermark text, default is 'watermark'  
+fontColor:`[string]` text watermark color, default is '#ebebeb'  
+fontSize:`[string]` text watermark font size, default is 16px  
+image:`[string]` image watermark(higher priority than text)  
+scale:`[number]` image scaling ratio  
+angle:`[number]` watermark rotation angle  
+gapX:`[number]` horizontal spacing of watermark default is 4  
+gapY:`[number]` vertical spacing of watermark, default is 10  
+sparseness:`[string]` watermark sparseness: normal: regular sparse: sparse compressed: compact, default is normal  
+antiErase:`[boolean]` whether to enable anti-erase, enabled by default
 
 text watermark
 
@@ -36,7 +34,7 @@ const watermark = watermarkFn({
 });
 
 // create canvas and mount it to a container, then use render() to render content,
-// if will render text or image automatically
+// it will render text or image automatically
 watermark.create(container).render();
 ```
 

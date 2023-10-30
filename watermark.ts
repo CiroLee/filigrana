@@ -27,6 +27,7 @@ export class WaterMark {
   image: string | undefined;
   angle: number | undefined;
   private isInit: boolean = false;
+  private canvasAttributes = '';
   constructor(option?: WaterMarkOption) {
     // init params
     this.id = option?.id || 'water-mark-id';
@@ -93,17 +94,34 @@ export class WaterMark {
     const width = this.el!.offsetWidth;
     const height = this.el!.offsetHeight;
     this.initCanvas({ canvas, width, height });
+    // 存储画布信息，防篡改
+    this.canvasAttributes = this.getAttributes(canvas);
     this.el!.appendChild(canvas);
     return canvas;
+  }
+
+  private getAttributes(el: HTMLElement) {
+    let attrStr = '';
+    const attributes = el.attributes as unknown as Attr[];
+    for (const attr of attributes) {
+      attrStr += `${attr.name}=${attr.value} `;
+    }
+    return attrStr;
+  }
+
+  private needRerender(watermarkEL: HTMLCanvasElement) {
+    return this.canvasAttributes !== this.getAttributes(watermarkEL);
   }
 
   private antiEraseObserver() {
     const config = { attributes: true, childList: true, subtree: true };
     const observer = new MutationObserver(() => {
-      const watermarkEl = document.getElementById(this.id);
+      const watermarkEl = document.getElementById(this.id) as HTMLCanvasElement;
       if (!watermarkEl) {
         this.create(this.el);
         this.render();
+      } else if (this.needRerender(watermarkEl)) {
+        watermarkEl.parentElement?.removeChild(watermarkEl);
       }
     });
     observer.observe(document.body, config);
