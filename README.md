@@ -1,3 +1,8 @@
+<div align="center">
+    <img src="./assets/watermark.png" style="width: 320px" alt="banner" />
+    <h1>filigana</h1>
+  </div>
+  
 # filigrana
 
 it is a Spanish word that refers to watermark in English
