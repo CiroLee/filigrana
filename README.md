@@ -1,6 +1,5 @@
 <div align="center">
-    <img src="assets/watermark.png" style="width: 320px" alt="banner" />
-    <h1>filigana</h1>
+    <img src="https://ciro.club/statics/images/icons/1698646388_2OHZGhOqF2_RefOSY1BXJ.svg" style="width: 320px" alt="banner" />
   </div>
   
 # filigrana
